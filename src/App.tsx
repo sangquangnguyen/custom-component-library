@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Button from "./components/Button";
+import TextField from "./components/TextField";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{ margin: 50 }}>
+      <h1 className="font-medium leading-tight text-2xl mt-0 mb-2 text-blue-600">
+        TextField
+      </h1>
+      <TextField
+        label="Email"
+        placeholder="test@example.com"
+        description="Personal Email"
+      />
+      <br />
+      <h1 className="font-medium leading-tight text-2xl mt-0 mb-2 text-blue-600">
+        Button
+      </h1>
+      <Button>Button ABC</Button>
     </div>
   );
 }
