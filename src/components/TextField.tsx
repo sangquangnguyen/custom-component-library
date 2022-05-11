@@ -12,7 +12,7 @@ const TextField = (props: TextFieldPropsType) => {
   return (
     <div className="mb-4">
       <label
-        className="form-label inline-block mb-2 text-gray-700"
+        className="form-label block text-sm leading-5 font-medium text-gray-700"
         {...labelProps}
       >
         {props.label}
