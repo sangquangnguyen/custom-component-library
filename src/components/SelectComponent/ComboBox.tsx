@@ -8,15 +8,15 @@ import ListBox from "./ListBox";
 import Popover from "./Popover";
 
 const ComboBox = <T extends object>(props: ComboBoxProps<T>) => {
-  let { contains } = useFilter({ sensitivity: "base" });
-  let state = useComboBoxState({ ...props, defaultFilter: contains });
+  const { contains } = useFilter({ sensitivity: "base" });
+  const state = useComboBoxState({ ...props, defaultFilter: contains });
 
-  let buttonRef = React.useRef(null);
-  let inputRef = React.useRef(null);
-  let listBoxRef = React.useRef(null);
-  let popoverRef = React.useRef(null);
+  const buttonRef = React.useRef(null);
+  const inputRef = React.useRef(null);
+  const listBoxRef = React.useRef(null);
+  const popoverRef = React.useRef(null);
 
-  let {
+  const {
     buttonProps: triggerProps,
     inputProps,
     listBoxProps,
@@ -32,7 +32,7 @@ const ComboBox = <T extends object>(props: ComboBoxProps<T>) => {
     state
   );
 
-  let { buttonProps } = useButton(triggerProps, buttonRef);
+  const { buttonProps } = useButton(triggerProps, buttonRef);
 
   return (
     <div className="inline-flex flex-col relative">

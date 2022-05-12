@@ -5,18 +5,54 @@ import classNames from "classnames";
 
 type ButtonProps = AriaButtonProps<"button"> & {
   isLoading?: boolean;
+  intent?: "normal" | "success" | "error";
+  className?: string;
+};
+
+const generateButtonStyle = ({
+  isDisabled = false,
+  isPressed = false,
+  isLoading = false,
+  intent = "normal",
+}: {
+  isDisabled: boolean | undefined;
+  isPressed: boolean | undefined;
+  isLoading: boolean | undefined;
+  intent: "normal" | "success" | "error" | undefined;
+}) => {
+  if (isDisabled) {
+    return "bg-gray-400";
+  }
+
+  switch (intent) {
+    case "success":
+      if (isLoading) return "bg-green-700 pointer-events-none";
+      if (isPressed) return "bg-green-700";
+      return "bg-green-500";
+    case "error":
+      if (isLoading) return "bg-red-700 pointer-events-none";
+      if (isPressed) return "bg-red-700";
+      return "bg-red-500";
+
+    default:
+      if (isLoading) return "bg-primary-700 pointer-events-none";
+      if (isPressed) return "bg-primary-700";
+      return "bg-primary-500";
+  }
 };
 
 const Button = (props: ButtonProps) => {
   const ref = useRef() as React.MutableRefObject<HTMLButtonElement>;
   const { buttonProps, isPressed } = useButton(props, ref);
   const { focusProps, isFocusVisible } = useFocusRing();
+  const backgroundStyle = generateButtonStyle({
+    isDisabled: props.isDisabled,
+    isPressed,
+    intent: props.intent,
+    isLoading: props.isLoading,
+  });
   const className = classNames(
-    props.isDisabled
-      ? "bg-gray-400"
-      : isPressed
-      ? "bg-primary-700"
-      : "bg-primary-500",
+    backgroundStyle,
     "text-white",
     "font-bold",
     "py-2",
@@ -29,7 +65,8 @@ const Button = (props: ButtonProps) => {
     "ease-in-out",
     "duration-150",
     "flex",
-    "items-center"
+    "items-center",
+    props.className
   );
 
   return (

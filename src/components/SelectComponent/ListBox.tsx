@@ -21,7 +21,7 @@ interface OptionProps {
 }
 
 const ListBoxSection = ({ section, state }: SectionProps) => {
-  let { itemProps, headingProps, groupProps } = useListBoxSection({
+  const { itemProps, headingProps, groupProps } = useListBoxSection({
     heading: section.rendered,
     "aria-label": section["aria-label"],
   });
@@ -47,9 +47,26 @@ const ListBoxSection = ({ section, state }: SectionProps) => {
   );
 };
 
+const generateTextStyle = ({
+  isFocused,
+  isSelected,
+  isDisabled,
+}: {
+  isFocused: boolean;
+  isSelected: boolean;
+  isDisabled: boolean;
+}) => {
+  if (isFocused || isSelected) {
+    return "text-primary-700";
+  } else if (isDisabled) {
+    return "text-gray-200";
+  }
+  return "text-gray-700";
+};
+
 const Option = ({ item, state }: OptionProps) => {
-  let ref = React.useRef<HTMLLIElement>(null);
-  let { optionProps, isDisabled, isSelected, isFocused } = useOption(
+  const ref = React.useRef<HTMLLIElement>(null);
+  const { optionProps, isDisabled, isSelected, isFocused } = useOption(
     {
       key: item.key,
     },
@@ -57,12 +74,7 @@ const Option = ({ item, state }: OptionProps) => {
     ref
   );
 
-  let text = "text-gray-700";
-  if (isFocused || isSelected) {
-    text = "text-primary-700";
-  } else if (isDisabled) {
-    text = "text-gray-200";
-  }
+  const text = generateTextStyle({ isFocused, isSelected, isDisabled });
 
   return (
     <li
@@ -81,9 +93,9 @@ const Option = ({ item, state }: OptionProps) => {
 };
 
 const ListBox = (props: ListBoxProps) => {
-  let ref = React.useRef<HTMLUListElement>(null);
-  let { listBoxRef = ref, state } = props;
-  let { listBoxProps } = useListBox(props, state, listBoxRef);
+  const ref = React.useRef<HTMLUListElement>(null);
+  const { listBoxRef = ref, state } = props;
+  const { listBoxProps } = useListBox(props, state, listBoxRef);
 
   return (
     <ul
