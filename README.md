@@ -1,6 +1,6 @@
-# Assignment 2: Implement a custom component library
+# Assignment 3: Implement a custom component library
 
-**Principles and Design Patterns of React Programming - Batch01 - Tháng 4, 2022**
+**Principles and Design Patterns of React Programming - Tháng 4, 2022**
 - Nguyễn Quang Sang - sang.quang.nguyen@employmenthero.com
 
 ## How to run app
