@@ -14,10 +14,8 @@ import ListBox from "./ListBox";
 import Popover from "./Popover";
 
 const Select = <T extends object>(props: AriaSelectProps<T>) => {
-  // Create state based on the incoming props
   const state = useSelectState(props);
 
-  // Get props for child elements from useSelect
   const ref = React.useRef(null);
   const { labelProps, triggerProps, valueProps, menuProps } = useSelect(
     props,
@@ -25,7 +23,6 @@ const Select = <T extends object>(props: AriaSelectProps<T>) => {
     ref
   );
 
-  // Get props for the button based on the trigger props from useSelect
   const { buttonProps } = useButton(triggerProps, ref);
 
   const { focusProps, isFocusVisible } = useFocusRing();
