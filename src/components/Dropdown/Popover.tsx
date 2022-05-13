@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { useOverlay, DismissButton, FocusScope } from "react-aria";
 
 interface PopoverProps {
@@ -24,6 +24,8 @@ const Popover = (props: PopoverProps) => {
     popoverRef
   );
 
+  // Add a hidden <DismissButton> component at the end of the popover
+  // to allow screen reader users to dismiss the popup easily.
   return (
     <FocusScope restoreFocus>
       <div

@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "./components/Button";
-import { ComboBox, Item } from "./components/SelectComponent";
+import { ComboBox } from "./components/Dropdown";
+import { Select, Item } from "./components/Dropdown";
 import TextField from "./components/TextField";
 
 function App() {
@@ -61,8 +62,9 @@ function App() {
       </div>
 
       <h1 className="font-medium leading-tight text-3xl mt-4 mb-2 text-primary-500">
-        ComboBox
+        Dropdown
       </h1>
+      <h2 className="font-medium leading-tight text-xl mt-1 mb-1">Combobox</h2>
       <ComboBox label="Animal">
         <Item key="red_panda">Red Panda</Item>
         <Item key="cat">Cat</Item>
@@ -71,6 +73,15 @@ function App() {
         <Item key="kangaroo">Kangaroo</Item>
         <Item key="snake">Snake</Item>
       </ComboBox>
+      <h2 className="font-medium leading-tight text-xl mt-1 mb-1">Select</h2>
+      <Select label="Animal">
+        <Item key="red_panda">Red Panda</Item>
+        <Item key="cat">Cat</Item>
+        <Item key="dog">Dog</Item>
+        <Item key="aardvark">Aardvark</Item>
+        <Item key="kangaroo">Kangaroo</Item>
+        <Item key="snake">Snake</Item>
+      </Select>
     </div>
   );
 }

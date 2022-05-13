@@ -26,13 +26,13 @@ const generateButtonStyle = ({
 
   switch (intent) {
     case "success":
-      if (isLoading) return "bg-green-700 pointer-events-none";
-      if (isPressed) return "bg-green-700";
-      return "bg-green-500";
+      if (isLoading) return "bg-success-700 pointer-events-none";
+      if (isPressed) return "bg-success-700";
+      return "bg-success-500";
     case "error":
-      if (isLoading) return "bg-red-700 pointer-events-none";
-      if (isPressed) return "bg-red-700";
-      return "bg-red-500";
+      if (isLoading) return "bg-error-700 pointer-events-none";
+      if (isPressed) return "bg-error-700";
+      return "bg-error-500";
 
     default:
       if (isLoading) return "bg-primary-700 pointer-events-none";

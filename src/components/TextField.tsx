@@ -24,7 +24,7 @@ const TextField = (props: TextFieldPropsType) => {
     "bg-clip-padding",
     "border",
     "border-solid",
-    props.invalid ? "border-red-500" : "border-gray-300",
+    props.invalid ? "border-error-500" : "border-gray-300",
     "rounded",
     "transition",
     "ease-in-out",
@@ -41,7 +41,7 @@ const TextField = (props: TextFieldPropsType) => {
     "text-sm",
     "leading-5",
     "font-medium",
-    props.invalid ? "text-red-500" : "text-gray-700"
+    props.invalid ? "text-error-500" : "text-gray-700"
   );
 
   return (
@@ -56,7 +56,7 @@ const TextField = (props: TextFieldPropsType) => {
         </div>
       )}
       {props.errorMessage && (
-        <div {...errorMessageProps} className="text-sm text-red-500 mt-1">
+        <div {...errorMessageProps} className="text-sm text-error-500 mt-1">
           {props.errorMessage}
         </div>
       )}

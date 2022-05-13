@@ -7,7 +7,11 @@ import { ChevronDownIcon } from "@heroicons/react/solid";
 import ListBox from "./ListBox";
 import Popover from "./Popover";
 
-const ComboBox = <T extends object>(props: ComboBoxProps<T>) => {
+const ComboBox = <T extends object>(
+  props: ComboBoxProps<T> & {
+    className?: string;
+  }
+) => {
   const { contains } = useFilter({ sensitivity: "base" });
   const state = useComboBoxState({ ...props, defaultFilter: contains });
 
@@ -35,7 +39,7 @@ const ComboBox = <T extends object>(props: ComboBoxProps<T>) => {
   const { buttonProps } = useButton(triggerProps, buttonRef);
 
   return (
-    <div className="inline-flex flex-col relative">
+    <div className="inline-flex flex-col relative w-full mb-4">
       <label
         {...labelProps}
         className="form-label block text-sm leading-5 font-medium text-gray-700"
@@ -50,7 +54,7 @@ const ComboBox = <T extends object>(props: ComboBoxProps<T>) => {
         <input
           {...inputProps}
           ref={inputRef}
-          className="outline-none px-3 py-1"
+          className="outline-none px-3 py-1 w-full"
         />
         <button
           {...buttonProps}
