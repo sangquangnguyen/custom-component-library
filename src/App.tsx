@@ -1,12 +1,23 @@
-import React from "react";
+import React, { Key } from "react";
 import Button from "./components/Button";
 import { ComboBox } from "./components/Dropdown";
 import { Select, Item } from "./components/Dropdown";
 import TextField from "./components/TextField";
 
 function App() {
+  const [theme, setTheme] = React.useState<Key>("default");
+  const handleThemeChange = (option: Key) => {
+    setTheme(option);
+  };
   return (
-    <div className="App" style={{ margin: 50 }}>
+    <div className={`App ${theme}`} style={{ margin: 50 }}>
+      <Select label="Theme" onSelectionChange={handleThemeChange}>
+        <Item key="default">Theme Default</Item>
+
+        <Item key="theme-eh">Theme EH</Item>
+        <Item key="theme-neon">Theme Neon</Item>
+        <Item key="theme-helios">Theme Helios</Item>
+      </Select>
       <h1 className="font-medium leading-tight text-3xl mt-0 mb-2 text-primary-500">
         TextField
       </h1>

@@ -42,7 +42,7 @@ const ComboBox = <T extends object>(
     <div className="inline-flex flex-col relative w-full mb-4">
       <label
         {...labelProps}
-        className="form-label block text-sm leading-5 font-medium text-gray-700"
+        className="form-label block text-sm leading-5 font-medium text-typo-base"
       >
         {props.label}
       </label>
@@ -62,7 +62,7 @@ const ComboBox = <T extends object>(
           className={`px-1 bg-gray-100 cursor-default border-l ${
             state.isFocused
               ? "border-primary-500 text-primary-600"
-              : "border-gray-300 text-gray-500"
+              : "border-gray-300 text-typo-muted"
           }`}
         >
           <ChevronDownIcon className="w-4 h-4" aria-hidden="true" />
