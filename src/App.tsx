@@ -11,9 +11,12 @@ function App() {
   };
   return (
     <div className={`App ${theme}`} style={{ margin: 50 }}>
-      <Select label="Theme" onSelectionChange={handleThemeChange}>
+      <Select
+        label="Theme"
+        onSelectionChange={handleThemeChange}
+        defaultSelectedKey={theme}
+      >
         <Item key="default">Theme Default</Item>
-
         <Item key="theme-eh">Theme EH</Item>
         <Item key="theme-neon">Theme Neon</Item>
         <Item key="theme-helios">Theme Helios</Item>
@@ -47,7 +50,10 @@ function App() {
       <h2 className="font-medium leading-tight text-xl mt-1 mb-1">
         Basic usage
       </h2>
-      <Button>Click me</Button>
+      <div className="flex">
+        <Button>Filled Button</Button>
+        <Button variant="link">Link Button</Button>
+      </div>
       <h2 className="font-medium leading-tight text-xl mt-1 mb-1">
         With intent
       </h2>
@@ -68,6 +74,26 @@ function App() {
           Loading Success
         </Button>
         <Button isLoading intent="error">
+          Loading Error
+        </Button>
+      </div>
+      <div className="flex">
+        <Button intent="success" className="mr-3" variant="link">
+          Success
+        </Button>
+        <Button intent="error" className="mr-3" variant="link">
+          Error
+        </Button>
+        <Button isDisabled className="mr-3" variant="link">
+          Disabled
+        </Button>
+        <Button isLoading className="mr-3" variant="link">
+          Loading
+        </Button>
+        <Button isLoading intent="success" className="mr-3" variant="link">
+          Loading Success
+        </Button>
+        <Button isLoading intent="error" variant="link">
           Loading Error
         </Button>
       </div>

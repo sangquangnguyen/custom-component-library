@@ -7,6 +7,7 @@ type ButtonProps = AriaButtonProps<"button"> & {
   isLoading?: boolean;
   intent?: "normal" | "success" | "error";
   className?: string;
+  variant?: "filled" | "link";
 };
 
 const generateButtonStyle = ({
@@ -14,30 +15,38 @@ const generateButtonStyle = ({
   isPressed = false,
   isLoading = false,
   intent = "normal",
+  variant = "filled",
 }: {
   isDisabled: boolean | undefined;
   isPressed: boolean | undefined;
   isLoading: boolean | undefined;
   intent: "normal" | "success" | "error" | undefined;
+  variant?: "filled" | "link" | undefined;
 }) => {
+  const variantType = variant === "filled" ? "bg" : "text";
+  const textStyle = variant === "filled" ? "text-white" : "";
+
   if (isDisabled) {
-    return "bg-gray-400";
+    return `${textStyle} ${variantType}-gray-400`;
   }
 
   switch (intent) {
     case "success":
-      if (isLoading) return "bg-success-700 pointer-events-none";
-      if (isPressed) return "bg-success-700";
-      return "bg-success-500";
+      if (isLoading)
+        return `${textStyle} ${variantType}-success-700 pointer-events-none`;
+      if (isPressed) return `${textStyle} ${variantType}-success-700`;
+      return `${textStyle} ${variantType}-success-500`;
     case "error":
-      if (isLoading) return "bg-error-700 pointer-events-none";
-      if (isPressed) return "bg-error-700";
-      return "bg-error-500";
+      if (isLoading)
+        return `${textStyle} ${variantType}-error-700 pointer-events-none`;
+      if (isPressed) return `${textStyle} ${variantType}-error-700`;
+      return `${textStyle} ${variantType}-error-500`;
 
     default:
-      if (isLoading) return "bg-primary-700 pointer-events-none";
-      if (isPressed) return "bg-primary-700";
-      return "bg-primary-500";
+      if (isLoading)
+        return `${textStyle} ${variantType}-primary-700 pointer-events-none`;
+      if (isPressed) return `${textStyle} ${variantType}-primary-700`;
+      return `${textStyle} ${variantType}-primary-500`;
   }
 };
 
@@ -45,15 +54,16 @@ const Button = (props: ButtonProps) => {
   const ref = useRef() as React.MutableRefObject<HTMLButtonElement>;
   const { buttonProps, isPressed } = useButton(props, ref);
   const { focusProps, isFocusVisible } = useFocusRing();
-  const backgroundStyle = generateButtonStyle({
+  const buttonCustomStyle = generateButtonStyle({
     isDisabled: props.isDisabled,
     isPressed,
     intent: props.intent,
     isLoading: props.isLoading,
+    variant: props.variant,
   });
+
   const className = classNames(
-    backgroundStyle,
-    "text-white",
+    buttonCustomStyle,
     "font-bold",
     "py-2",
     "px-4",
@@ -77,7 +87,7 @@ const Button = (props: ButtonProps) => {
     >
       {props.isLoading && (
         <svg
-          className="mr-3 h-5 w-5 animate-spin text-white"
+          className="mr-3 h-5 w-5 animate-spin"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
