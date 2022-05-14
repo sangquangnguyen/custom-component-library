@@ -20,7 +20,7 @@ const TextField = (props: TextFieldPropsType) => {
     "py-1.5",
     "text-base",
     "font-normal",
-    "text-gray-700",
+    "text-typo-base",
     "bg-clip-padding",
     "border",
     "border-solid",
@@ -29,7 +29,7 @@ const TextField = (props: TextFieldPropsType) => {
     "transition",
     "ease-in-out",
     "m-0",
-    "focus:text-gray-700",
+    "focus:text-typo-base",
     "focus:bg-white",
     "focus:border-blue-600",
     "focus:outline-none"
@@ -41,7 +41,7 @@ const TextField = (props: TextFieldPropsType) => {
     "text-sm",
     "leading-5",
     "font-medium",
-    props.invalid ? "text-error-500" : "text-gray-700"
+    props.invalid ? "text-error-500" : "text-typo-base"
   );
 
   return (
@@ -51,7 +51,7 @@ const TextField = (props: TextFieldPropsType) => {
       </label>
       <input className={inputClassname} {...inputProps} />
       {props.description && (
-        <div {...descriptionProps} className="text-sm text-gray-500 mt-1">
+        <div {...descriptionProps} className="text-sm text-typo-muted mt-1">
           {props.description}
         </div>
       )}

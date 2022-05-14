@@ -31,7 +31,7 @@ const Select = <T extends object>(props: AriaSelectProps<T>) => {
     <div className="inline-flex flex-col relative w-full mb-4">
       <div
         {...labelProps}
-        className="block text-sm font-medium text-gray-700 text-left cursor-default"
+        className="block text-sm font-medium text-typo-base text-left cursor-default"
       >
         {props.label}
       </div>
@@ -51,7 +51,7 @@ const Select = <T extends object>(props: AriaSelectProps<T>) => {
         <span
           {...valueProps}
           className={`text-md ${
-            state.selectedItem ? "text-gray-800" : "text-gray-500"
+            state.selectedItem ? "text-typo-base" : "text-typo-muted"
           }`}
         >
           {state.selectedItem
@@ -60,7 +60,7 @@ const Select = <T extends object>(props: AriaSelectProps<T>) => {
         </span>
         <SelectorIcon
           className={`w-5 h-5 ${
-            isFocusVisible ? "text-primary-500" : "text-gray-500"
+            isFocusVisible ? "text-primary-500" : "text-typo-muted"
           }`}
         />
       </button>

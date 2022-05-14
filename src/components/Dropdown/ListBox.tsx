@@ -32,7 +32,7 @@ const ListBoxSection = ({ section, state }: SectionProps) => {
         {section.rendered && (
           <span
             {...headingProps}
-            className="text-xs font-bold uppercase text-gray-500 mx-3"
+            className="text-xs font-bold uppercase text-typo-muted mx-3"
           >
             {section.rendered}
           </span>
@@ -59,9 +59,9 @@ const generateTextStyle = ({
   if (isFocused || isSelected) {
     return "text-primary-700";
   } else if (isDisabled) {
-    return "text-gray-200";
+    return "text-typo-disabled";
   }
-  return "text-gray-700";
+  return "text-typo-base";
 };
 
 const Option = ({ item, state }: OptionProps) => {
