@@ -44,7 +44,7 @@ const Select = <T extends object>(props: AriaSelectProps<T>) => {
       <button
         {...mergeProps(buttonProps, focusProps)}
         ref={ref}
-        className={`p-1 pl-3 py-1 relative inline-flex flex-row items-center justify-between rounded-md overflow-hidden cursor-default shadow-sm border-2 outline-none ${
+        className={`p-1 pl-3 py-1 relative inline-flex flex-row items-center justify-between rounded-md overflow-hidden cursor-default shadow-sm border outline-none ${
           isFocusVisible ? "border-primary-500" : "border-gray-300"
         } ${state.isOpen ? "bg-gray-100" : "bg-white"}`}
       >
