@@ -14,6 +14,5 @@ yarn start
 
 ## Demo
 
-https://user-images.githubusercontent.com/88305140/168413264-ef0fe179-40a6-466b-8712-7dbef229311c.mov
-
+https://user-images.githubusercontent.com/88305140/168440542-58823e75-f783-4674-b06b-e57b23b088a1.mov
 
