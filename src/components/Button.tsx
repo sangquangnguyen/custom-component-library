@@ -10,6 +10,46 @@ type ButtonProps = AriaButtonProps<"button"> & {
   variant?: "filled" | "link";
 };
 
+const generateIntentStyle = (
+  intent: "normal" | "success" | "error",
+  isDisabled: boolean
+) => {
+  if (isDisabled) return "gray";
+
+  switch (intent) {
+    case "success":
+      return "success";
+    case "error":
+      return "error";
+    default:
+      return "primary";
+  }
+};
+
+const generateStateStyle = ({
+  isDisabled,
+  isPressed,
+  isLoading,
+}: {
+  isDisabled: boolean;
+  isPressed: boolean;
+  isLoading: boolean;
+}) => {
+  if (isDisabled) {
+    return "400";
+  }
+
+  if (isLoading) {
+    return "700";
+  }
+
+  if (isPressed) {
+    return "700";
+  }
+
+  return "500";
+};
+
 const generateButtonStyle = ({
   isDisabled = false,
   isPressed = false,
@@ -23,31 +63,15 @@ const generateButtonStyle = ({
   intent: "normal" | "success" | "error" | undefined;
   variant?: "filled" | "link" | undefined;
 }) => {
-  const variantType = variant === "filled" ? "bg" : "text";
-  const textStyle = variant === "filled" ? "text-white" : "";
+  const variantStyle = variant === "filled" ? "bg" : "text";
+  const intentStyle = generateIntentStyle(intent, isDisabled);
+  const stateStyle = generateStateStyle({ isDisabled, isLoading, isPressed });
 
-  if (isDisabled) {
-    return `${textStyle} ${variantType}-gray-400`;
-  }
-
-  switch (intent) {
-    case "success":
-      if (isLoading)
-        return `${textStyle} ${variantType}-success-700 pointer-events-none`;
-      if (isPressed) return `${textStyle} ${variantType}-success-700`;
-      return `${textStyle} ${variantType}-success-500`;
-    case "error":
-      if (isLoading)
-        return `${textStyle} ${variantType}-error-700 pointer-events-none`;
-      if (isPressed) return `${textStyle} ${variantType}-error-700`;
-      return `${textStyle} ${variantType}-error-500`;
-
-    default:
-      if (isLoading)
-        return `${textStyle} ${variantType}-primary-700 pointer-events-none`;
-      if (isPressed) return `${textStyle} ${variantType}-primary-700`;
-      return `${textStyle} ${variantType}-primary-500`;
-  }
+  return classNames(
+    `${variantStyle}-${intentStyle}-${stateStyle}`,
+    isLoading ? "pointer-events-none" : undefined,
+    variant === "filled" ? "text-white" : undefined
+  );
 };
 
 const Button = (props: ButtonProps) => {
@@ -98,7 +122,7 @@ const Button = (props: ButtonProps) => {
             cy="12"
             r="10"
             stroke="currentColor"
-            stroke-width="4"
+            strokeWidth="4"
           ></circle>
           <path
             className="opacity-75"
